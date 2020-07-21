@@ -1,13 +1,13 @@
-
 spring.mvc.view.prefix: /WEB-INF/view/
 spring.mvc.view.suffix: .jsp
 
 spring:
   datasource:
     #driver-class-name: com.mysql.cj.jdbc.MysqlDataSource
-    url: jdbc:mysql://pragraweekday.cxxxqolmfew7.us-east-2.rds.amazonaws.com:3306/userDB?useSSL=false&serverTimezone=UTC
-    username: admin
-    password: pragra2019
+      url: jdbc:mysql://pragraweekday.cxxxqolmfew7.us-east-2.rds.amazonaws.com:3306/userDB?useSSL=false&serverTimezone=UTC
+      username: admin
+      password: pragra2019
+
   jpa:
     generate-ddl: true
     hibernate:

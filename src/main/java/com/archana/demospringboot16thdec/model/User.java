@@ -8,23 +8,22 @@ import javax.persistence.*;
 @Table(name = "userdetails")
 public class User {
 
-    User(){
+   public User() {
 
     }
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userid; // unique identification key, primary key
-    @Column(name = "User_name")
+   /* @Column(name = "User_name")
     private String username;
     @Column(name = "First_Name")
-    private String FirstName;
+    private String firstName;
     @Column(name = "Last_Name")
-    private String LastName;
-    @Column(name = "age")
-    private int age;
+    private String lastName;
+
     @Column(name = "password")
-    private String password;
+    private String password;  */
 
     public int getUserid() {
         return userid;
@@ -34,7 +33,7 @@ public class User {
         this.userid = userid;
     }
 
-    public String getUsername() {
+  /*  public String getUsername() {
         return username;
     }
 
@@ -43,27 +42,19 @@ public class User {
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+        this.lastName = lastName;
     }
 
     public String getPassword() {
@@ -74,11 +65,10 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String firstName, String lastName, int age, String password) {
+  public User(String username, String firstName, String lastName, int age, String password) {
         this.username = username;
-        FirstName = firstName;
-        LastName = lastName;
-        this.age = age;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
     }
 
@@ -87,10 +77,9 @@ public class User {
         return "User{" +
                 "userid=" + userid +
                 ", username='" + username + '\'' +
-                ", FirstName='" + FirstName + '\'' +
-                ", LastName='" + LastName + '\'' +
-                ", age=" + age +
+                ", FirstName='" + firstName + '\'' +
+                ", LastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
+    }  */
 }

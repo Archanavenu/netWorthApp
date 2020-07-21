@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
+
 @Configuration
 @PropertySource("classpath:application.yml")
 public class MYSQLdatasource {
@@ -19,7 +20,7 @@ public class MYSQLdatasource {
 
     // creating datasource bean which creates a datasource builder and adding the sources
     @Bean
-    DataSource dataSource(){
+    DataSource dataSource() {
         return DataSourceBuilder.create()
                 .url(dataUrl)
                 .username(user)
