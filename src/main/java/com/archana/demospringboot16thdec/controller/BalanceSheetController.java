@@ -19,15 +19,26 @@ public class BalanceSheetController {
         this.balanceSheetService=balanceSheetService;
     }
 
+
     @GetMapping("/api/hello")
     public String hello() {
         return "Hello from Spring Boot, the time at the server is now " + new Date() + "\n";
     }
 
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public BalanceSheet createBalanceSheet(@RequestBody BalanceSheet balanceSheet){
+        return balanceSheetService.saveBalanceSheet(balanceSheet);
+    }
+
+    @RequestMapping(value="/getBalanceSheet", method = RequestMethod.GET)
+    public BalanceSheet getBalanceSheetById(@RequestParam int id){
+        return balanceSheetService.getBalanceSheetById(id);
+    }
+
 
     @RequestMapping(value="/netWorth", method = RequestMethod.POST)
     public Long calculateNetWort(@RequestBody ArrayList<BalanceSheet> balanceSheets)throws Exception{
-        return balanceSheetService.calculateNetWort(balanceSheets);
+        return balanceSheetService.calculateNetWorth(balanceSheets);
 
     }
 

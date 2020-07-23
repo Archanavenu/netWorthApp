@@ -42,6 +42,7 @@ public class BalanceSheet {
         this.description = description;
         this.value = value;
         this.name = name;
+
     }
 
     public int getId() {
