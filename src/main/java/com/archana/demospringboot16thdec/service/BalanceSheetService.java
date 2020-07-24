@@ -25,7 +25,6 @@ public class BalanceSheetService {
 
     public BalanceSheet getBalanceSheetById(int id){
        return balanceSheetRepo.findById(id).get();
-
     }
 
 

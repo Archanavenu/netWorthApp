@@ -30,8 +30,8 @@ public class BalanceSheetController {
         return balanceSheetService.saveBalanceSheet(balanceSheet);
     }
 
-    @RequestMapping(value="/getBalanceSheet", method = RequestMethod.GET)
-    public BalanceSheet getBalanceSheetById(@RequestParam int id){
+    @RequestMapping(value="/getBalanceSheet/{id}", method = RequestMethod.GET)
+    public BalanceSheet getBalanceSheetById(@PathVariable("id") int id){
         return balanceSheetService.getBalanceSheetById(id);
     }
 

@@ -23,6 +23,7 @@ public class BalanceSheet {
     @Column
     private String name;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userdetails_userid")
     User user;
