@@ -25,19 +25,19 @@ public class BalanceSheetController {
         return "Hello from Spring Boot, the time at the server is now " + new Date() + "\n";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST,consumes = "application/json", produces = "application/json")
     public BalanceSheet createBalanceSheet(@RequestBody BalanceSheet balanceSheet){
         return balanceSheetService.saveBalanceSheet(balanceSheet);
     }
 
-    @RequestMapping(value="/getBalanceSheet/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/getBalanceSheet/{id}", method = RequestMethod.GET,consumes = "application/json", produces = "application/json")
     public BalanceSheet getBalanceSheetById(@PathVariable("id") int id){
         return balanceSheetService.getBalanceSheetById(id);
     }
 
-
-    @RequestMapping(value="/netWorth", method = RequestMethod.POST)
-    public Long calculateNetWort(@RequestBody ArrayList<BalanceSheet> balanceSheets)throws Exception{
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(value="/netWorth", method = RequestMethod.POST,consumes = "application/json", produces = "application/json")
+    public Long calculateNetWorth(@RequestBody ArrayList<BalanceSheet> balanceSheets)throws Exception{
         return balanceSheetService.calculateNetWorth(balanceSheets);
 
     }
