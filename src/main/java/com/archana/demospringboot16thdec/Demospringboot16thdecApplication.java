@@ -18,6 +18,8 @@ public class Demospringboot16thdecApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/netWorth").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/getTotal").allowedOrigins("http://localhost:3000");
+
             }
         };
     }

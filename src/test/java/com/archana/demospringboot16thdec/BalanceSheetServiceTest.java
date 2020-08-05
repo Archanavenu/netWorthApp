@@ -9,23 +9,26 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 public class BalanceSheetServiceTest {
     static BalanceSheet balanceSheet;
-    @Autowired
-    BalanceSheetService balanceSheetService;
-    @MockBean
-    UserRepository userRepository;
-    @MockBean
-    BalanceSheetRepo balanceSheetRepo;
+
+    static BalanceSheetService balanceSheetService;
+
+    static UserRepository userRepository;
+
+    static BalanceSheetRepo balanceSheetRepo;
 
     @BeforeClass
     public static void setUp(){
         balanceSheet= new BalanceSheet();
+        balanceSheetService= new BalanceSheetService(balanceSheetRepo,userRepository);
         System.out.println("Setup done");
     }
     @Test

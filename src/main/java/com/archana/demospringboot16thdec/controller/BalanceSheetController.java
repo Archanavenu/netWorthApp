@@ -38,8 +38,13 @@ public class BalanceSheetController {
     @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(value="/netWorth", method = RequestMethod.POST,consumes = "application/json", produces = "application/json")
     public Long calculateNetWorth(@RequestBody ArrayList<BalanceSheet> balanceSheets)throws Exception{
-        return balanceSheetService.calculateNetWorth(balanceSheets);
+          return balanceSheetService.calculateNetWorth(balanceSheets);
 
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(value = "/getTotal", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public int getTotalofBalanceSheet(@RequestBody ArrayList<BalanceSheet> balanceSheets){
+        return balanceSheetService.getTotal(balanceSheets);
+    }
 }

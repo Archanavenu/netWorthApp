@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "BalanceSheet")
 public class BalanceSheet {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
     @NotNull

@@ -13,7 +13,7 @@ public class User {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userid; // unique identification key, primary key
    /* @Column(name = "User_name")
     private String username;

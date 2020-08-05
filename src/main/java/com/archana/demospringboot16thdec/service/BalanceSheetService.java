@@ -19,26 +19,47 @@ public class BalanceSheetService {
     @Autowired
     private UserRepository userRepository;
 
+    public  BalanceSheetService(BalanceSheetRepo balanceSheetRepo, UserRepository userRepository){
+        this.balanceSheetRepo= balanceSheetRepo;
+        this.userRepository= userRepository;
+    }
+
     public BalanceSheet saveBalanceSheet(BalanceSheet balanceSheet){
         return balanceSheetRepo.save(balanceSheet);
     }
 
-    public BalanceSheet getBalanceSheetById(int id){
-       return balanceSheetRepo.findById(id).get();
+    public BalanceSheet getBalanceSheetById(int id) {
+        return balanceSheetRepo.findById(id).get();
     }
+
+    public int getTotal(ArrayList<BalanceSheet> balanceSheets){
+        int assetTotal=0;
+        int liabilityTotal=0;
+        for(BalanceSheet balanceSheet: balanceSheets){
+            if(balanceSheet.getDescription().equals(ASSET)){
+                assetTotal=assetTotal+balanceSheet.getValue();
+                return assetTotal;
+            } else if(balanceSheet.getDescription().equals(LIABILITY)){
+                liabilityTotal=liabilityTotal+balanceSheet.getValue();
+                return liabilityTotal;
+            }
+        }
+        return 0;
+    }
+
 
 
     public static final String ASSET = "ASSET";
     public static final String LIABILITY = "LIABILITY";
 
     public Long calculateNetWorth(ArrayList<BalanceSheet> balanceSheets) throws Exception {
-        User user = new User();
-        user = userRepository.save(user);
-        Long netWorth = 0L;
-        System.out.println(balanceSheets.size());
+           User user = new User();
+           user = userRepository.save(user);
+            Long netWorth = 0L;
+         System.out.println(balanceSheets.size());
         for (BalanceSheet balanceSheet : balanceSheets) {
             System.out.println(balanceSheet.getValue());
-            balanceSheet.setUser(user);
+          balanceSheet.setUser(user);
             if (balanceSheet.getDescription().equals(ASSET)) {
                 netWorth = netWorth + balanceSheet.getValue();
             } else if (balanceSheet.getDescription().equals(LIABILITY)) {
@@ -46,8 +67,10 @@ public class BalanceSheetService {
             } else {
                 throw new Exception("Unknown type");
             }
+
         }
-        balanceSheetRepo.saveAll(balanceSheets);
+
+      balanceSheetRepo.saveAll(balanceSheets);
         return netWorth;
     }
 
